@@ -1,48 +1,49 @@
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export const Container = styled.View`
-  display: flex;
-  flex-direction: row;
-
-  justify-content: space-between;
-  /* align-items: center; */
-
+export const ListProducts = styled.ScrollView`
   background: #222;
-  width: 100%;
-  height: 100%;
 `;
 
-export const ListProducts = styled.ScrollView``;
-
-export const Product = styled.View`
+export const Container = styled.View`
   display: flex;
   flex-direction: column;
 
   background: #fff;
-  width: 250px;
-  height: 350px;
+  height: 200px;
   border-radius: 4px;
-  margin: 20px 10px;
-  padding: 12px 8px;
+  margin: 14px 12px 0 12px;
+  padding: 10px;
+`;
+
+export const Product = styled.View`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const ProductInformations = styled.View`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-around;
+  margin-left: 6px;
 `;
 
 export const ProductImage = styled.Image`
-  height: 200px;
-  width: 100%;
+  height: 150px;
+  width: 150px;
 `;
 
 export const ProductName = styled.Text`
   color: #666;
-  line-height: 20;
   font-size: 16px;
   font-weight: bold;
-  margin-top: 6px;
+  flex-wrap: nowrap;
 `;
 
 export const ProductPrice = styled.Text`
   color: #333;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   margin-top: 4px;
 `;

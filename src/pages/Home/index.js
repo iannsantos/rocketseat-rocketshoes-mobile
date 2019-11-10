@@ -8,6 +8,7 @@ import {
   ListProducts,
   Product,
   ProductImage,
+  ProductInformations,
   ProductName,
   ProductPrice,
   ButtonAddCart,
@@ -34,27 +35,29 @@ export default function Home() {
   }, []);
 
   return (
-    <Container>
-      <ListProducts horizontal>
-        {products.map(product => (
-          <Product key={product.id}>
+    <ListProducts>
+      {products.map(product => (
+        <Container key={product.id}>
+          <Product>
             <ProductImage
               source={{
                 uri: product.image,
               }}
             />
-            <ProductName>{product.title}</ProductName>
-            <ProductPrice>{product.price}</ProductPrice>
-            <ButtonAddCart>
-              <Cart>
-                <CartQtd>3</CartQtd>
-                <CartIcon />
-              </Cart>
-              <TextAddCart>ADICIONAR AO CARRINHO</TextAddCart>
-            </ButtonAddCart>
+            <ProductInformations>
+              <ProductName>{product.title}</ProductName>
+              <ProductPrice>{product.price}</ProductPrice>
+            </ProductInformations>
           </Product>
-        ))}
-      </ListProducts>
-    </Container>
+          <ButtonAddCart>
+            <Cart>
+              <CartQtd>3</CartQtd>
+              <CartIcon />
+            </Cart>
+            <TextAddCart>ADICIONAR AO CARRINHO</TextAddCart>
+          </ButtonAddCart>
+        </Container>
+      ))}
+    </ListProducts>
   );
 }
