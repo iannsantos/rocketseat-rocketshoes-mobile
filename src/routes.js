@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import Home from './pages/Home';
 import Cart from './pages/Cart';
-import AppBar from './components/AppBar';
+import Header from './components/Header';
 
 const Routes = createAppContainer(
   createStackNavigator(
@@ -14,13 +14,12 @@ const Routes = createAppContainer(
     },
     {
       headerLayoutPreset: 'center',
-      defaultNavigationOptions: {
-        headerBackground: <AppBar />,
-        headerStyle: {
-          backgroundColor: '#7159c1',
-        },
-        headerTintColor: '#fff',
-      },
+      defaultNavigationOptions: navigation => ({
+        header: <Header {...navigation} />,
+        // headerStyle: {
+        //   backgroundColor: '#7159c1',
+        // },
+      }),
     }
   )
 );

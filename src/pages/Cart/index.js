@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -22,6 +22,7 @@ import {
   TextEmptyCart,
   CartTotal,
   FinishButton,
+  FinishText,
   TextTotal,
   TextTotalPrice,
 } from './styles';
@@ -35,12 +36,18 @@ export default function Cart() {
   );
 
   const total = useSelector(state => {
-    formatPrice(
+    // let totalSum = 0;
+    return formatPrice(
+      // state.cart.map(product => {
+      //   totalSum += product.price * product.amount;
+      // });
+      // console.tron.log(totalSum);
       state.cart.reduce((totalSum, product) => {
-        console.tron.log(totalSum);
+        console.tron.log(product.price * product.amout);
         return totalSum + product.price * product.amount;
       }, 0)
     );
+    // return formatPrice(totalSum);
   });
 
   const dispatch = useDispatch();
@@ -60,7 +67,15 @@ export default function Cart() {
   return (
     <Container>
       <CartDisplay>
-        {cart.length !== 0 ? (
+        {cart.length === 0 ? (
+          <EmptyCart>
+            <Icon name="remove-shopping-cart" size={60} color="#999" />
+            <TextEmptyCart>
+              Carrinho vazio {'\n'}
+              Volte a loja e faça suas compras!
+            </TextEmptyCart>
+          </EmptyCart>
+        ) : (
           cart.map(product => (
             <Product key={product.id}>
               <ProductImage source={{ uri: product.image }} />
@@ -78,31 +93,23 @@ export default function Cart() {
                   <TouchableOpacity onPress={() => increment(product)}>
                     <Icon name="add-circle-outline" size={18} color="#7159c1" />
                   </TouchableOpacity>
+                  <Button onPress={() => handleRemoveProduct(product.id)}>
+                    <IconDelete />
+                  </Button>
                 </Amount>
                 <ProductSubTotal>{product.subtotal}</ProductSubTotal>
               </ProductInformations>
-              <Button onPress={() => handleRemoveProduct(product.id)}>
-                <IconDelete />
-              </Button>
             </Product>
           ))
-        ) : (
-          <EmptyCart>
-            <Icon name="remove-shopping-cart" size={60} color="#999" />
-            <TextEmptyCart>
-              Carrinho vazio {'\n'}
-              Volte a loja e faça suas compras!
-            </TextEmptyCart>
-          </EmptyCart>
         )}
+        <CartTotal>
+          <FinishButton>
+            <FinishText>FINALIZAR PEDIDO</FinishText>
+          </FinishButton>
+          <TextTotal>Total:</TextTotal>
+          <TextTotalPrice>{total}</TextTotalPrice>
+        </CartTotal>
       </CartDisplay>
-      <CartTotal>
-        <FinishButton>
-          <Text>FINALIZAR PEDIDO</Text>
-        </FinishButton>
-        <TextTotal>Total:</TextTotal>
-        <TextTotalPrice>{total}</TextTotalPrice>
-      </CartTotal>
     </Container>
   );
 }

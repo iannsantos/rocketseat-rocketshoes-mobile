@@ -29,8 +29,8 @@ export const ProductInformations = styled.View`
 `;
 
 export const ProductImage = styled.Image`
-  height: 150px;
-  width: 150px;
+  height: 130px;
+  width: 130px;
 `;
 
 export const ProductName = styled.Text`
@@ -44,7 +44,6 @@ export const ProductPrice = styled.Text`
   color: #333;
   font-size: 24px;
   font-weight: bold;
-  margin-top: 4px;
 `;
 
 export const ButtonAddCart = styled.TouchableOpacity`
@@ -54,6 +53,13 @@ export const ButtonAddCart = styled.TouchableOpacity`
   background: #7159c1;
   border-radius: 4px;
   margin-top: 6px;
+`;
+
+export const TextAddCart = styled.Text`
+  /* padding-left: 10px; */
+  color: #fff;
+  font-weight: bold;
+  margin: 0 auto;
 `;
 
 export const Cart = styled.View`
@@ -74,10 +80,4 @@ export const CartAmount = styled.Text`
   font-size: 14px;
   margin-right: 4px;
   color: #fff;
-`;
-
-export const TextAddCart = styled.Text`
-  padding-left: 10px;
-  color: #fff;
-  font-weight: bold;
 `;

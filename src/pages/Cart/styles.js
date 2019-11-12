@@ -79,9 +79,10 @@ export const IconDelete = styled(Icon).attrs({
 })``;
 
 export const Button = styled.TouchableOpacity`
-  position: absolute;
+  margin-left: 18px;
+  /* position: absolute;
   top: 32px;
-  right: -12px;
+  right: -12px; */
 `;
 
 export const EmptyCart = styled.View`
@@ -101,14 +102,9 @@ export const TextEmptyCart = styled.Text`
 export const CartTotal = styled.View`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: baseline;
 
-  width: 95%;
   margin-top: 12px;
-  padding: 12px;
-  border-radius: 4px;
-  background: #fff;
 `;
 export const FinishButton = styled.TouchableOpacity`
   background: #7159c1;
@@ -116,10 +112,17 @@ export const FinishButton = styled.TouchableOpacity`
   border-radius: 4px;
 `;
 export const TextTotal = styled.Text`
+  margin-left: auto;
+  margin-right: 4px;
   color: #666;
   font-weight: bold;
 `;
 export const TextTotalPrice = styled.Text`
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+export const FinishText = styled.Text`
+  color: #fff;
   font-weight: bold;
 `;
