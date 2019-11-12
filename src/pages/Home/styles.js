@@ -10,7 +10,6 @@ export const Container = styled.View`
   flex-direction: column;
 
   background: #fff;
-  height: 200px;
   border-radius: 4px;
   margin: 14px 12px 0 12px;
   padding: 10px;
@@ -26,7 +25,7 @@ export const ProductInformations = styled.View`
   flex-direction: column;
   flex: 1;
   justify-content: space-around;
-  margin-left: 6px;
+  margin-left: 8px;
 `;
 
 export const ProductImage = styled.Image`
@@ -52,10 +51,9 @@ export const ButtonAddCart = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* justify-content: space-between; */
   background: #7159c1;
   border-radius: 4px;
-  margin-top: auto;
+  margin-top: 6px;
 `;
 
 export const Cart = styled.View`
@@ -67,12 +65,12 @@ export const Cart = styled.View`
 `;
 
 export const CartIcon = styled(Icon).attrs({
-  name: 'shopping-cart',
+  name: 'add-shopping-cart',
   size: 15,
   color: '#fff',
 })``;
 
-export const CartQtd = styled.Text`
+export const CartAmount = styled.Text`
   font-size: 14px;
   margin-right: 4px;
   color: #fff;

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import api from '../../services/api';
 import { formatPrice } from '../../util/formatPrice';
+import * as CartActions from '../../store/module/cart/actions';
 
 import {
   Container,
@@ -14,25 +16,38 @@ import {
   ButtonAddCart,
   Cart,
   CartIcon,
-  CartQtd,
+  CartAmount,
   TextAddCart,
 } from './styles';
 
-export default function Home() {
+export default function Home({ navigation }) {
   const [products, setProducts] = useState([]);
+  const amount = useSelector(state =>
+    state.cart.reduce((sumAmount, product) => {
+      sumAmount[product.id] = product.amount;
+      return sumAmount;
+    }, {})
+  );
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function loadProducts() {
       const response = await api.get('/products');
 
-      // const data = response.data.map(product => ({
-      //   ...product,
-      //   priceFormated: formatPrice(product.price),
-      // }));
-      setProducts(response.data);
+      const data = response.data.map(product => ({
+        ...product,
+        priceFormated: formatPrice(product.price),
+      }));
+      setProducts(data);
     }
     loadProducts();
   }, []);
+
+  function handleAddCart(product) {
+    dispatch(CartActions.addToCart(product));
+    navigation.navigate('Cart');
+  }
 
   return (
     <ListProducts>
@@ -46,12 +61,12 @@ export default function Home() {
             />
             <ProductInformations>
               <ProductName>{product.title}</ProductName>
-              <ProductPrice>{product.price}</ProductPrice>
+              <ProductPrice>{product.priceFormated}</ProductPrice>
             </ProductInformations>
           </Product>
-          <ButtonAddCart>
+          <ButtonAddCart onPress={() => handleAddCart(product)}>
             <Cart>
-              <CartQtd>3</CartQtd>
+              <CartAmount>{amount[product.id] || 0}</CartAmount>
               <CartIcon />
             </Cart>
             <TextAddCart>ADICIONAR AO CARRINHO</TextAddCart>
