@@ -44,9 +44,8 @@ export default function Home({ navigation }) {
     loadProducts();
   }, []);
 
-  function handleAddCart(product) {
-    dispatch(CartActions.addToCart(product));
-    navigation.navigate('Cart');
+  function handleAddCart(id) {
+    dispatch(CartActions.addToCartRequest(id));
   }
 
   return (
@@ -64,7 +63,7 @@ export default function Home({ navigation }) {
               <ProductPrice>{product.priceFormated}</ProductPrice>
             </ProductInformations>
           </Product>
-          <ButtonAddCart onPress={() => handleAddCart(product)}>
+          <ButtonAddCart onPress={() => handleAddCart(product.id)}>
             <Cart>
               <CartAmount>{amount[product.id] || 0}</CartAmount>
               <CartIcon />

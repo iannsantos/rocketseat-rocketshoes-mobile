@@ -12,7 +12,7 @@ import store from './store';
 export default function App() {
   return (
     <Provider store={store}>
-      <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
+      <StatusBar barStyle="light-content" backgroundColor="#222" />
       <Routes
         ref={navigatorRef => NavigationService.setNavigator(navigatorRef)}
       />

@@ -23,19 +23,35 @@ export const CartDisplay = styled.View`
 export const Product = styled.View`
   display: flex;
   flex-direction: row;
-  border-bottom-width: 1px;
+  margin-top: 4px;
+  align-items: center;
+  /* border-bottom-width: 1px;
   border-bottom-color: rgba(9, 9, 9, 0.1);
-  margin-bottom: 6px;
+  margin-bottom: 6px; */
+`;
+
+export const Column = styled.View`
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 4px;
+  margin: 0 6px;
+  flex: 1;
 `;
 
 export const ProductInformations = styled.View`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  border-radius: 4px;
-  padding: 4px;
-  margin: 0 6px;
-  flex: 1;
+  justify-content: space-between;
+  margin: 4px 0;
+`;
+
+export const Amount = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 `;
 
 export const ProductImage = styled.Image`
@@ -48,12 +64,15 @@ export const ProductTitle = styled.Text`
   color: #666;
 `;
 
-export const Amount = styled.View`
+export const Row = styled.View`
   display: flex;
   flex-direction: row;
-  align-items: center;
-  /* justify-content: space-evenly; */
-  margin: 6px 0;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 4px 0;
+  padding: 4px;
+  background: rgba(9, 9, 9, 0.1);
+  border-radius: 4px;
 `;
 
 export const ProductAmount = styled.TextInput.attrs({
@@ -66,10 +85,15 @@ export const ProductAmount = styled.TextInput.attrs({
   margin: 0 12px 0 12px;
 `;
 
-export const ProductSubTotal = styled.Text`
-  font-size: 18px;
+export const ProductPrice = styled.Text`
+  color: #777;
   font-weight: bold;
-  margin-bottom: 6px;
+`;
+
+export const ProductSubTotal = styled.Text`
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 2px;
 `;
 
 export const IconDelete = styled(Icon).attrs({
@@ -80,9 +104,6 @@ export const IconDelete = styled(Icon).attrs({
 
 export const Button = styled.TouchableOpacity`
   margin-left: 18px;
-  /* position: absolute;
-  top: 32px;
-  right: -12px; */
 `;
 
 export const EmptyCart = styled.View`
@@ -101,28 +122,34 @@ export const TextEmptyCart = styled.Text`
 
 export const CartTotal = styled.View`
   display: flex;
-  flex-direction: row;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
 
+  width: 95%;
+  border-radius: 4px;
+  background: #fff;
   margin-top: 12px;
+  padding: 8px 0;
 `;
 export const FinishButton = styled.TouchableOpacity`
   background: #7159c1;
   padding: 4px 8px;
   border-radius: 4px;
+  margin-top: 10px;
+  width: 95%;
 `;
 export const TextTotal = styled.Text`
-  margin-left: auto;
-  margin-right: 4px;
   color: #666;
   font-weight: bold;
 `;
 export const TextTotalPrice = styled.Text`
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
 `;
 
 export const FinishText = styled.Text`
   color: #fff;
   font-weight: bold;
+  font-size: 16px;
+  text-align: center;
 `;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { Wrapper, Container, Cart, Text, Logo, IconCart } from './styles';
@@ -11,7 +12,9 @@ export default function AppBar({ navigation }) {
   return (
     <Wrapper>
       <Container>
-        <Logo />
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Logo />
+        </TouchableOpacity>
         <Cart onPress={() => navigation.navigate('Cart')}>
           <Text>{cartSize || 0}</Text>
           <IconCart />

@@ -10,11 +10,14 @@ import {
   Container,
   CartDisplay,
   Product,
+  Row,
+  Column,
   ProductInformations,
   ProductImage,
   ProductTitle,
   Amount,
   ProductAmount,
+  ProductPrice,
   ProductSubTotal,
   IconDelete,
   Button,
@@ -43,7 +46,6 @@ export default function Cart() {
       // });
       // console.tron.log(totalSum);
       state.cart.reduce((totalSum, product) => {
-        console.tron.log(product.price * product.amout);
         return totalSum + product.price * product.amount;
       }, 0)
     );
@@ -57,11 +59,11 @@ export default function Cart() {
   }
 
   function increment(product) {
-    dispatch(CartActions.updateAmount(product.id, product.amount + 1));
+    dispatch(CartActions.updateAmountRequest(product.id, product.amount + 1));
   }
 
   function decrement(product) {
-    dispatch(CartActions.updateAmount(product.id, product.amount - 1));
+    dispatch(CartActions.updateAmountRequest(product.id, product.amount - 1));
   }
 
   return (
@@ -79,37 +81,48 @@ export default function Cart() {
           cart.map(product => (
             <Product key={product.id}>
               <ProductImage source={{ uri: product.image }} />
-              <ProductInformations>
+              <Column>
                 <ProductTitle>{product.title}</ProductTitle>
-                <Amount>
-                  <TouchableOpacity onPress={() => decrement(product)}>
-                    <Icon
-                      name="remove-circle-outline"
-                      size={18}
-                      color="#7159c1"
-                    />
-                  </TouchableOpacity>
-                  <ProductAmount>{product.amount}</ProductAmount>
-                  <TouchableOpacity onPress={() => increment(product)}>
-                    <Icon name="add-circle-outline" size={18} color="#7159c1" />
-                  </TouchableOpacity>
+                <ProductInformations>
+                  <ProductPrice>{product.priceFormated}</ProductPrice>
                   <Button onPress={() => handleRemoveProduct(product.id)}>
                     <IconDelete />
                   </Button>
-                </Amount>
-                <ProductSubTotal>{product.subtotal}</ProductSubTotal>
-              </ProductInformations>
+                </ProductInformations>
+                <Row>
+                  <Amount>
+                    <TouchableOpacity onPress={() => decrement(product)}>
+                      <Icon
+                        name="remove-circle-outline"
+                        size={18}
+                        color="#7159c1"
+                      />
+                    </TouchableOpacity>
+                    <ProductAmount>{product.amount}</ProductAmount>
+                    <TouchableOpacity onPress={() => increment(product)}>
+                      <Icon
+                        name="add-circle-outline"
+                        size={18}
+                        color="#7159c1"
+                      />
+                    </TouchableOpacity>
+                  </Amount>
+                  <ProductSubTotal>{product.subtotal}</ProductSubTotal>
+                </Row>
+              </Column>
             </Product>
           ))
         )}
+      </CartDisplay>
+      {cart.length !== 0 && (
         <CartTotal>
+          <TextTotal>TOTAL</TextTotal>
+          <TextTotalPrice>{total}</TextTotalPrice>
           <FinishButton>
             <FinishText>FINALIZAR PEDIDO</FinishText>
           </FinishButton>
-          <TextTotal>Total:</TextTotal>
-          <TextTotalPrice>{total}</TextTotalPrice>
         </CartTotal>
-      </CartDisplay>
+      )}
     </Container>
   );
 }

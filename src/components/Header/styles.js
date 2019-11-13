@@ -12,7 +12,7 @@ export const Container = styled.View`
   flex-direction: row;
   justify-content: space-between;
   padding: 12px 10px 10px 10px;
-  background: #7159c1;
+  /* background: #7159c1; */
   width: 100%;
   margin-left: auto;
 `;
@@ -32,7 +32,7 @@ export const Logo = styled.Image.attrs({
 `;
 
 export const IconCart = styled(Icon).attrs({
-  name: 'shopping-cart',
+  name: 'shopping-basket',
   size: 25,
   color: '#fff',
 })``;
